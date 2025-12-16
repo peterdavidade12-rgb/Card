@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+
+        .card-container{
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card{
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 159px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card h2{
+            margin: 0;
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        .card p{
+            font-size: 2em;
+            margin: 10px 0 0;
+            color: #007bff;
+        } 
+    </style>
+</head>
+<body>
+    <div class="card-container" id="cardcontainer"></div>
+
+    <script>
+        function createCard(index){
+            const card =document.createElement('div');
+            card.className ='card';
+
+            const title = document.createElement('h2');
+            title.textContent = `Card ${index + 1}`;
+
+            const number = document.createElement('p');
+            number.textContent = Math.floor(Math.random() * 100);
+
+            card.appendChild(title);
+            card.appendChild(number);
+            return card;
+        }
+
+        const container = document.getElementById('cardcontainer');
+        for (let i = 0; i < 10; i++) {
+            container.appendChild(createCard(i));
+        }
+    </script>
+</body>
+</html>
